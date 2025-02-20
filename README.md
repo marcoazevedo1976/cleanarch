@@ -1,2 +1,1 @@
-# cleanarch
-Desafio 03 da Pós Go Expert
+# Desafio Clean Architecture | Pós Go Expert
