@@ -18,6 +18,10 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq
     restart: always
+    cap_add:
+      - SYS_NICE
+    security_opt:
+      - seccomp=unconfined
     ports:
       - 5672:5672
       - 15672:15672
