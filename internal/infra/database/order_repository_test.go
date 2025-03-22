@@ -49,3 +49,20 @@ func (suite *OrderRepositoryTestSuite) TestGivenAnOrder_WhenSave_ThenShouldSaveO
 	suite.Equal(order.Tax, orderResult.Tax)
 	suite.Equal(order.FinalPrice, orderResult.FinalPrice)
 }
+
+func (suite *OrderRepositoryTestSuite) TestShouldListOrders() {
+	repo := NewOrderRepository(suite.Db)
+	order, err := entity.NewOrder("123", 10.0, 2.0)
+	suite.NoError(err)
+	suite.NoError(order.CalculateFinalPrice())
+	err = repo.Save(order)
+	suite.NoError(err)
+
+	orders, err := repo.List()
+	suite.NoError(err)
+	suite.Equal(1, len(orders))
+	suite.Equal(order.ID, orders[0].ID)
+	suite.Equal(order.Price, orders[0].Price)
+	suite.Equal(order.Tax, orders[0].Tax)
+	suite.Equal(order.FinalPrice, orders[0].FinalPrice)
+}
