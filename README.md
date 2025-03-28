@@ -2,9 +2,10 @@
 
 ## Instruções
 1. Clone o repositório
-2. execute docker compose up --build -up
+2. Entre na pasta do repositório
+2. Execute: docker compose up --build -d
 
-## Importante (mas muito importante...)
+## Importante
 - O arquivo api.http solicitado no exercício está na pasta api
 - O servidor REST estará ouvindo na porta 8000
 - O servidor gRPC estará ouvindo na porta 50051
